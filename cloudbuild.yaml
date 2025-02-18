@@ -4,13 +4,19 @@ steps:
       - build
       - -t
       - $_REGISTRY/$_REPOSITORY:${SHORT_SHA}
+      - --build-arg
+      - NODE_ENV=production
       - .
+    id: build-image
+
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - push
       - $_REGISTRY/$_REPOSITORY:${SHORT_SHA}
+    id: push-image
+
 options:
   substitution:
-    _REGISTRY: 'REGION-docker.pkg.dev/myproject-448803'
+    _REGISTRY: 'us-central1-docker.pkg.dev/myproject-448803'  # Fixed region
     _REPOSITORY: 'zuhaib-100935821'
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
