@@ -9,7 +9,7 @@ COPY package*.json ./
 
 # Install dependencies.
 RUN npm install -g npm@11.1.0
-
+RUN npm
 # Copy the rest of your application files.
 COPY . .
 
