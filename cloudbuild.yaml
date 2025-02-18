@@ -11,8 +11,8 @@ steps:
       - $_REGISTRY/$_REPOSITORY:${SHORT_SHA}
 
 substitutions:
-  _REGISTRY: 'REGION-docker.pkg.dev/PROJECT-ID'
-  _REPOSITORY: 'zuhaib-100935821'
+  _REGISTRY: 'REGION-docker.pkg.dev/myproject-448803'
+  _REPOSITORY: 'Zuhaib-100935821'
 
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
