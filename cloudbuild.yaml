@@ -9,8 +9,10 @@ steps:
     args:
       - push
       - $_REGISTRY/$_REPOSITORY:${SHORT_SHA}
+
+substitutions:
+  _REGISTRY: 'REGION-docker.pkg.dev/PROJECT-ID'
+  _REPOSITORY: 'Zuhaib-100935821'
+
 options:
-  substitution:
-    _REGISTRY: 'REGION-docker.pkg.dev/PROJECT-ID'
-    _REPOSITORY: 'Zuhaib-100935821'
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
