@@ -4,12 +4,13 @@ steps:
       - build
       - -t
       - $_REGISTRY/$_REPOSITORY:${SHORT_SHA}
-      - --build-arg
-      - NODE_ENV=production
       - .
-    id: Build
-
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', '$_REGISTRY/$_REPOSITORY:${SHORT_SHA}']
-    id: Push
-
+    args:
+      - push
+      - $_REGISTRY/$_REPOSITORY:${SHORT_SHA}
+options:
+  substitution:
+    _REGISTRY: 'REGION-docker.pkg.dev/myproject-448803'
+    _REPOSITORY: 'zuhaib-100935821'
+  defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
