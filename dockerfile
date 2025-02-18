@@ -1,14 +1,17 @@
-FROM node:18
+FROM node:18-bookworm
 
 WORKDIR /app
 
-COPY package*.json ./
+# Install dependencies first for caching
+COPY package.json package-lock.json ./
+RUN npm ci --only=production --no-audit --no-fund
 
-RUN npm install
-
+# Copy app files
 COPY . .
 
-EXPOSE 3000
+# Create non-root user and set permissions
+RUN chown -R node:node /app
+USER node
 
-CMD ["node", "index.js"]
-
+EXPOSE 8080
+CMD ["npm", "start"]
