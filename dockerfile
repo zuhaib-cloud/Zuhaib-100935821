@@ -5,4 +5,4 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 EXPOSE 3000
-CMD ["node", "server.js"]  # <-- Ensure your app starts on PORT 8080
+CMD ["node", "start"]  
