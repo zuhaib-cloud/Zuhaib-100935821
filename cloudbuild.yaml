@@ -12,5 +12,5 @@ steps:
 options:
   substitution:
     _REGISTRY: 'REGION-docker.pkg.dev/PROJECT-ID'
-    _REPOSITORY: 'firstname-studentid'
+    _REPOSITORY: 'Zuhaib-100935821'
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
