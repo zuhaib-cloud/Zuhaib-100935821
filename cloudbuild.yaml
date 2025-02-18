@@ -1,11 +1,16 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: [
-      'build',
-      '-t', 'us-central1-docker.pkg.dev/myproject-448803/zuhaib-100935821/$SHORT_SHA',
-      '.'
-    ]
-images:
-  - 'us-central1-docker.pkg.dev/myproject-448803/zuhaib-100935821/$SHORT_SHA'
+    args:
+      - build
+      - -t
+      - $_REGISTRY/$_REPOSITORY:${SHORT_SHA}
+      - .
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - push
+      - $_REGISTRY/$_REPOSITORY:${SHORT_SHA}
 options:
+  substitution:
+    _REGISTRY: 'REGION-docker.pkg.dev/PROJECT-ID'
+    _REPOSITORY: 'firstname-studentid'
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
