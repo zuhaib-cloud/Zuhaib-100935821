@@ -5,7 +5,7 @@ steps:
     args: ['push', 'us-central1-docker.pkg.dev/myproject-448803/zuhaib-100935821/$SHORT_SHA']
 
 options:
-  logging: REGIONAL_USER_OWNED_BUCKET
+  logging:'us-central1'
 
 substitutions:
   _REGION: 'us-central1'
