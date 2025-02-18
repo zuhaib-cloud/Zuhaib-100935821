@@ -12,7 +12,7 @@ steps:
 
 substitutions:
   _REGISTRY: 'REGION-docker.pkg.dev/PROJECT-ID'
-  _REPOSITORY: 'Zuhaib-100935821'
+  _REPOSITORY: 'zuhaib-100935821'
 
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
