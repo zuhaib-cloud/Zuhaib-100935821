@@ -4,5 +4,5 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-EXPOSE 8080  # <-- Ensure this matches your app's port
+EXPOSE 3000
 CMD ["node", "server.js"]  # <-- Ensure your app starts on PORT 8080
