@@ -1,17 +1,20 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/myproject-448803/zuhaib-100935821/$SHORT_SHA', '.']
+    args:
+      - build
+      - -t
+      - $_REGISTRY/$_REPOSITORY:${SHORT_SHA}
+      - --build-arg
+      - NODE_ENV=production
+      - .
+    id: Build
+
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/myproject-448803/zuhaib-100935821/$SHORT_SHA']
+    args: ['push', '$_REGISTRY/$_REPOSITORY:${SHORT_SHA}']
+    id: Push
 
 options:
-  logging:'us-central1'
-
-substitutions:
-  _REGION: 'us-central1'
-
-trigger:
-  name: 'dc-zuhaib-100935821'
-  event: 'push'
-  branch: 'main'  # or the branch you want to trigger the build
-  approvalRequired: true
+  substitution:
+    _REGISTRY: 'REGION-docker.pkg.dev/myproject-448803'
+    _REPOSITORY: 'zuhaib-100935821'
+  defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
