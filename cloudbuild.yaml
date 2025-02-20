@@ -27,7 +27,7 @@ steps:
       - '--platform'
       - 'managed'
       - '--port'
-      - '8080'
+      - '3000'
       - '--allow-unauthenticated'
 
 options:
