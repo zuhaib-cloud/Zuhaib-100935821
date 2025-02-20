@@ -4,38 +4,31 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'us-central1-docker.pkg.dev/$PROJECT_ID/zuhaib-100935821/app:${COMMIT_SHA}'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/meet-100940639/app:${COMMIT_SHA}'
       - '.'
-   - name: 'gcr.io/google.com/cloudsdktool/google-cloud-cli'
-    args:
-      - 'gcloud'
-      - 'run'
-      - 'deploy'
-      - 'zuhaib-100935821-service'
-      - '--image'
-      - 'us-central1-docker.pkg.dev/$PROJECT_ID/zuhaib-100935821/app:${COMMIT_SHA}'
-      - '--region'
-      - 'us-central1'
-      - '--platform'
-      - 'managed'
-  
+
   # Push to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'us-central1-docker.pkg.dev/$PROJECT_ID/zuhaib-100935821/app:${COMMIT_SHA}'
-   - name: 'gcr.io/google.com/cloudsdktool/google-cloud-cli'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/meet-100940639/app:${COMMIT_SHA}'
+
+  # Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/google-cloud-cli'
     args:
       - 'gcloud'
       - 'run'
       - 'deploy'
-      - 'zuhaib-100935821-service'
+      - 'meet-100940639-service'
       - '--image'
-      - 'us-central1-docker.pkg.dev/$PROJECT_ID/zuhaib-100935821/app:${COMMIT_SHA}'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/meet-100940639/app:${COMMIT_SHA}'
       - '--region'
       - 'us-central1'
       - '--platform'
       - 'managed'
+      - '--port'
+      - '8080'
+      - '--allow-unauthenticated'
 
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
