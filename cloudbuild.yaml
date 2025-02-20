@@ -19,7 +19,7 @@ steps:
       - 'gcloud'
       - 'run'
       - 'deploy'
-      - 'meet-100940639-service'
+      - 'zuhaib-100935821-service'
       - '--image'
       - 'us-central1-docker.pkg.dev/$PROJECT_ID/zuhaib-100935821/app:${COMMIT_SHA}'
       - '--region'
