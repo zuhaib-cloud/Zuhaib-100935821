@@ -4,14 +4,14 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'us-central1-docker.pkg.dev/$PROJECT_ID/meet-100940639/app:${COMMIT_SHA}'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/zuhaib-100935821/app:${COMMIT_SHA}'
       - '.'
 
   # Push to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'us-central1-docker.pkg.dev/$PROJECT_ID/meet-100940639/app:${COMMIT_SHA}'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/zuhaib-100935821/app:${COMMIT_SHA}'
 
   # Deploy to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/google-cloud-cli'
@@ -21,7 +21,7 @@ steps:
       - 'deploy'
       - 'meet-100940639-service'
       - '--image'
-      - 'us-central1-docker.pkg.dev/$PROJECT_ID/meet-100940639/app:${COMMIT_SHA}'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/zuhaib-100935821/app:${COMMIT_SHA}'
       - '--region'
       - 'us-central1'
       - '--platform'
